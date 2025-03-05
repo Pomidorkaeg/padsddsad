@@ -16,14 +16,8 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #f0f0f0; /* Светлый фон */
+    background: #121212; /* Темный фон */
     z-index: -1;
-}
-
-@media (max-width: 768px) {
-    body::before {
-        background-attachment: scroll;
-    }
 }
 
 .header {
@@ -177,23 +171,6 @@ body::before {
     transform: scale(1.05);
 }
 
-@media (max-width: 768px) {
-    .content-container {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .product-image {
-        max-width: 80%;
-    }
-}
-
-@media (max-width: 480px) {
-    .product-image {
-        max-width: 90%;
-    }
-}
-
 .image-gallery {
     display: flex;
     justify-content: center;
@@ -237,59 +214,42 @@ body::before {
     align-items: center;
     text-align: center;
     height: 100vh;
-}
-
-.luxvar-background {
+    overflow: hidden; /* Добавлено, чтобы избежать прокрутки */
+  }
+  
+  .luxvar-background {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0;
+    left: 0;
     width: 100%;
-    text-align: center;
-    z-index: -1;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px; /* Расстояние между текстом и изображением */
-}
-
-.luxvar-text {
-    font-size: 20vw;
+    z-index: -1; /* Убедитесь, что текст находится за контентом */
+  }
+  
+  .luxvar-text {
+    width: 100%;
+    height: 100%;
+    font-size: 100px; /* Адаптивный размер текста */
     color: transparent;
     -webkit-text-stroke: 2px white;
     opacity: 0.2;
-    font-weight: 900;
+    font-weight: 600;
     text-transform: uppercase;
     white-space: nowrap;
-    font-family: 'Roboto', sans-serif;
+    font-family: sans-serif;
     letter-spacing: 2px;
-}
-
-.luxvar-image img {
-    max-width: 400px;
-    width: 100%;
-    height: auto;
-    border-radius: 15px;
-    opacity: 0.2; /* Чтобы изображение не перекрывало текст */
-}
-
-@media (max-width: 768px) {
-    .luxvar-text {
-        font-size: 15vw;
-    }
-    .luxvar-image img {
-        max-width: 300px;
-    }
-}
-
-@media (max-width: 480px) {
-    .luxvar-text {
-        font-size: 12vw;
-    }
-    .luxvar-image img {
-        max-width: 200px;
-    }
-}
+  }
+  
+  .luxvar-text text {
+    fill: none; /* Убираем заливку */
+    stroke: white; /* Обводка текста */
+    stroke-width: 2; /* Толщина обводки */
+    stroke-linejoin: round; /* Сглаживание углов */
+    stroke-linecap: round; /* Сглаживание концов линий */
+  }
 
 .download-button {
     width: 100%;
@@ -304,20 +264,11 @@ body::before {
     text-transform: uppercase;
     font-weight: 800;
     text-shadow: wheat;
-    transition: background 0.3s ease; /* Оставляем только изменение фона */
+    transition: background 0.3s ease;
 }
 
 .download-button:hover {
-    background: black; /* Оставляем только изменение фона */
-}
-
-@keyframes button-float {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
+    background: black;
 }
 
 .social-media-button {
@@ -418,47 +369,6 @@ body::before {
     font-weight: 700;
 }
 
-.additional-image {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 5;
-}
-
-.additional-image img {
-    max-width: 400px;
-    height: auto;
-    border-radius: 15px;
-}
-
-@media (max-width: 768px) {
-    .logo {
-        font-size: 1.5rem;
-    }
-    .text-content,
-    .image-content {
-        flex: 1 1 100%;
-    }
-    .download-button {
-        width: 100%;
-    }
-    h1,
-    h2 {
-        font-size: 1.5rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .logo {
-        font-size: 1.2rem;
-    }
-    h1,
-    h2 {
-        font-size: 1.2rem;
-    }
-}
-
 #scrollToTopBtn {
     display: none;
     position: fixed;
@@ -492,35 +402,4 @@ body::before {
 #scrollToTopBtn:hover {
     background-color: #333;
     transform: translateY(-5px);
-}
-
-/* Стили для фоновых слов */
-.floating-texts {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    overflow: hidden;
-    z-index: -1;
-}
-
-.floating-text {
-    position: absolute;
-    font-size: 24px;
-    color: rgba(255, 255, 255, 0.1);
-    transform: rotate(50deg); /* Поворот на 50 градусов */
-    white-space: nowrap;
-    user-select: none;
-    animation: float 10s linear infinite;
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(-100%) rotate(50deg); /* Начинаем сверху за пределами экрана */
-    }
-    100% {
-        transform: translateY(100vh) rotate(50deg); /* Двигаемся вниз за пределы экрана */
-    }
 }

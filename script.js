@@ -72,19 +72,4 @@ document.addEventListener('DOMContentLoaded', function() {
             closeModal();
         }
     });
-
-    // Добавляем множество слов "LUXVAR" на задний фон сразу при загрузке страницы
-    const floatingTexts = document.querySelector('.floating-texts');
-    const numberOfTexts = 200; // Количество текстов
-
-    for (let i = 0; i < numberOfTexts; i++) {
-        const text = document.createElement('div');
-        text.classList.add('floating-text');
-        text.textContent = 'LUXVAR';
-        text.style.left = `${Math.random() * 100}%`; // Случайное горизонтальное положение
-        text.style.top = `${Math.random() * 100}%`; // Случайное вертикальное положение
-        text.style.animationDelay = `${Math.random() * 10}s`; // Случайная задержка анимации
-        text.style.animationDuration = `${10 + Math.random() * 10}s`; // Случайная скорость анимации
-        floatingTexts.appendChild(text);
-    }
 });
