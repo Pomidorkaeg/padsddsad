@@ -1,26 +1,19 @@
 document.addEventListener('DOMContentLoaded', function() {
     const scrollToTopBtn = document.getElementById('scrollToTopBtn');
 
-    // Показываем кнопку, когда пользователь прокрутил страницу вниз
+    // Показываем кнопку прокрутки вверх
     window.addEventListener('scroll', function() {
-        if (window.scrollY > 200) {
-            scrollToTopBtn.style.display = 'block';
-        } else {
-            scrollToTopBtn.style.display = 'none';
-        }
+        scrollToTopBtn.style.display = window.scrollY > 200 ? 'block' : 'none';
     });
 
-    // Прокрутка вверх при нажатии на кнопку
+    // Прокрутка вверх
     scrollToTopBtn.addEventListener('click', function() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    document.querySelector('.why-us-button').addEventListener('click', function() {
-        const section = document.getElementById('why-us-section');
-        section.scrollIntoView({ behavior: 'smooth' });
+    // Навигация по кнопкам
+    document.getElementById('whyUsButton').addEventListener('click', function() {
+        document.getElementById('why-us-section').scrollIntoView({ behavior: 'smooth' });
     });
 
     document.getElementById('downloadButton').addEventListener('click', function() {
@@ -31,27 +24,19 @@ document.addEventListener('DOMContentLoaded', function() {
         window.location.href = 'https://raw.githubusercontent.com/Pomidorkaeg/afriklanegtfd/main/LuxVar.zip';
     });
 
+    // Управление модальными окнами
     function openModal(modalId) {
-        const modal = document.getElementById(modalId);
-        const overlay = document.querySelector('.modal-overlay');
-
-        document.querySelectorAll('.modal').forEach(modal => {
-            modal.style.display = 'none';
-        });
-
-        modal.style.display = 'block';
-        overlay.style.display = 'block';
+        document.querySelectorAll('.modal').forEach(modal => modal.style.display = 'none');
+        document.getElementById(modalId).style.display = 'block';
+        document.querySelector('.modal-overlay').style.display = 'block';
     }
 
     function closeModal() {
-        const overlay = document.querySelector('.modal-overlay');
-        document.querySelectorAll('.modal').forEach(modal => {
-            modal.style.display = 'none';
-        });
-        overlay.style.display = 'none';
+        document.querySelectorAll('.modal').forEach(modal => modal.style.display = 'none');
+        document.querySelector('.modal-overlay').style.display = 'none';
     }
 
-    document.querySelector('.instruction-button').addEventListener('click', function() {
+    document.getElementById('instructionButton').addEventListener('click', function() {
         openModal('instructionModal');
     });
 
@@ -59,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
         window.open('https://youtu.be/5NHAoFDQQJY', '_blank');
     });
 
-    document.querySelector('.social-media-button').addEventListener('click', function() {
+    document.getElementById('socialMediaButton').addEventListener('click', function() {
         openModal('socialMediaModal');
     });
 
